@@ -46,7 +46,7 @@ functions:
     handler: list.products
     events:
       - http:
-          path: categories/{id}
+          path: categories/{category}
           method: get
           cors: true
 
