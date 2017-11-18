@@ -1,0 +1,10 @@
+{
+    "pathParameters": {
+        "category": "coffee"
+      },
+    "requestContext": {
+      "identity": {
+        "cognitoIdentityId": "eu-central-1:e393fcdf-4bba-4a36-b844-c8bfafc20fc7"
+      }
+    }
+}

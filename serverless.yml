@@ -1,0 +1,77 @@
+service: bakery-backend
+
+plugins:
+  - serverless-webpack
+
+custom:
+  webpackIncludeModules: true
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: prod
+  region: eu-central-1
+
+iamRoleStatements:
+  - Effect: Allow
+    Action:
+      - dynamodb:DescribeTable
+      - dynamodb:Query
+      - dynamodb:Scan
+      - dynamodb:GetItem
+      - dynamodb:PutItem
+      - dynamodb:UpdateItem
+      - dynamodb:DeleteItem
+    Resource: arn:aws:dynamodb:eu-central-1:*:*
+
+functions:
+  create-product:
+    handler: create.main
+    events: 
+      - http:
+          path: products
+          method: post
+          cors: true
+          authorizer: aws_iam
+  
+  list-categories:
+    handler: list.main
+    events:
+      - http:
+          path: categories
+          method: get
+          cors: true
+
+  list-products:
+    handler: list.products
+    events:
+      - http:
+          path: categories/{id}
+          method: get
+          cors: true
+
+  get-product:
+    handler: get.main
+    events:
+      - http:
+          path: products/{id}
+          method: get
+          cors: true
+
+  update-product:
+    handler: update.main
+    events:
+      - http:
+          path: products/{id}
+          method: put
+          cors: true
+          authorizer: aws_iam
+
+  delete-product:
+    handler: delete.main
+    events:
+      - http:
+          path: products/{id}
+          method: delete
+          cors: true
+          authorizer: aws_iam

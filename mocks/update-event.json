@@ -1,0 +1,11 @@
+{
+    "body": "{\"attachment\":\"new_espresso.jpg\",\"price\":\"68.29 RUB\",\"content\":\"Original Italian short coffee usually served black or sweet\", \"productname\":\"espresso\", \"category\":\"coffee\"}",
+    "pathParameters": {
+      "id": "f8b61810-b741-11e7-8c6e-21abf3f80c88"
+    },
+    "requestContext": {
+      "identity": {
+        "cognitoIdentityId": "USER-SUB-1234"
+      }
+    }
+  }
