@@ -1,4 +1,4 @@
-service: bakery-backend
+service: bakerybackend
 
 plugins:
   - serverless-webpack
