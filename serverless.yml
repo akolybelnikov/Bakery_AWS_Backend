@@ -33,6 +33,24 @@ functions:
           method: post
           cors: true
           authorizer: aws_iam
+
+  create-offer:
+    handler: create.offer
+    events:
+      - http:
+          path: offers
+          method: post
+          cors: true
+          authorizer: aws_iam
+
+  create-news:
+    handler: create.news
+    events:
+      - http:
+          path: news
+          method: post
+          cors: true
+          authorizer: aws_iam
   
   list-categories:
     handler: list.main
@@ -49,12 +67,36 @@ functions:
           path: categories/{category}
           method: get
           cors: true
+  
+  list-offers:
+    handler: list.offer
+    events:
+      - http:
+          path: offers
+          method: get
+          cors: true
+
+  list-news:
+    handler: list.news
+    events:
+      - http:
+          path: news
+          method: get
+          cors: true
 
   get-product:
     handler: get.main
     events:
       - http:
           path: products/{id}
+          method: get
+          cors: true
+
+  get-news:
+    handler: get.news
+    events:
+      - http:
+          path: news/{id}
           method: get
           cors: true
 
