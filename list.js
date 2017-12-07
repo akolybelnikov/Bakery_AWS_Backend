@@ -20,12 +20,13 @@ export async function main(event, context, callback) {
 }
 
 export async function products(event, context, callback) {
+  console.log(event);
   const params = {
     TableName: "products",
     IndexName: "category-index",
     KeyConditionExpression: "category = :category",
     ExpressionAttributeValues: {
-      ":category": event.pathParameters.id
+      ":category": event.pathParameters.category
     },
     "ScanIndexForward": false
   };
