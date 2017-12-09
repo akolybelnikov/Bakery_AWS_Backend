@@ -15,6 +15,8 @@ export async function main(event, context, callback) {
             content: data.content,
             attachment: data.attachment,
             price: data.price,
+            image: data.image,
+            weight: data.weight,
             createdAt: new Date().getTime()
         }
     };
