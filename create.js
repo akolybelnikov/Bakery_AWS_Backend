@@ -40,6 +40,7 @@ export async function offer(event, context, callback) {
             offerId: uuid.v1(),
             content: data.content,
             attachment: data.attachment,
+            image: data.image,
             createdAt: new Date().getTime()
         }
     };
