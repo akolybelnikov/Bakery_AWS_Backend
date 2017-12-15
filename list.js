@@ -1,12 +1,13 @@
 import * as dynamoDbLib from "./libs/dynamodb-lib";
 import { success, failure } from "./libs/response-lib";
+import config from "./config/config"
 
 export async function main(event, context, callback) {
   const params = {
     TableName: "categories",
     KeyConditionExpression: "userId = :userId",
     ExpressionAttributeValues: {
-      ":userId": "eu-central-1:e393fcdf-4bba-4a36-b844-c8bfafc20fc7"
+      ":userId": config.cognito.USER_ID
     }
   };
 
@@ -20,10 +21,8 @@ export async function main(event, context, callback) {
 }
 
 export async function products(event, context, callback) {
-  console.log(event);
   const params = {
     TableName: "products",
-    IndexName: "category-index",
     KeyConditionExpression: "category = :category",
     ExpressionAttributeValues: {
       ":category": event.pathParameters.category
@@ -46,7 +45,7 @@ export async function offer(event, context, callback) {
     TableName: "offers",
     KeyConditionExpression: "userId = :userId",
     ExpressionAttributeValues: {
-      ":userId": "eu-central-1:e393fcdf-4bba-4a36-b844-c8bfafc20fc7"
+      ":userId": config.cognito.USER_ID
     }
   };
 
@@ -65,7 +64,7 @@ export async function news(event, context, callback) {
     TableName: "news",
     KeyConditionExpression: "userId = :userId",
     ExpressionAttributeValues: {
-      ":userId": "eu-central-1:e393fcdf-4bba-4a36-b844-c8bfafc20fc7"
+      ":userId": config.cognito.USER_ID
     }
   };
 

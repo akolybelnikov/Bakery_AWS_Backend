@@ -8,9 +8,8 @@ export async function main(event, context, callback) {
     const params = {
         TableName: "products",
         Item: {
-            userId: event.requestContext.identity.cognitoIdentityId,
-            productId: uuid.v1(),
             category: data.category,
+            productId: uuid.v1(),
             productName: data.productname,
             content: data.content,
             attachment: data.attachment,
@@ -64,6 +63,7 @@ export async function news(event, context, callback) {
             newsId: uuid.v1(),
             content: data.content,
             attachment: data.attachment,
+            image: data.image,
             createdAt: new Date().getTime()
         }
     };

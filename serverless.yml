@@ -117,3 +117,21 @@ functions:
           method: delete
           cors: true
           authorizer: aws_iam
+
+  update-news:
+    handler: update.news
+    events:
+      - http:
+          path: news/{id}
+          method: put
+          cors: true
+          authorizer: aws_iam
+
+  delete-news:
+    handler: delete.news
+    events:
+      - http:
+          path: news/{id}
+          method: delete
+          cors: true
+          authorizer: aws_iam

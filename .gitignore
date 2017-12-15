@@ -41,3 +41,9 @@ event.json
 
 # Serverless directories
 .serverless/
+
+#test files
+mocks
+
+#configuration variables
+config

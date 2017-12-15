@@ -1,6 +1,6 @@
 {
     "pathParameters": {
-        "category": "coffee"
+        "category": "bread"
       },
     "requestContext": {
       "identity": {

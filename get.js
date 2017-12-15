@@ -1,11 +1,11 @@
 import * as dynamoDbLib from "./libs/dynamodb-lib";
 import { success, failure } from "./libs/response-lib";
+import config from "./config/config"
 
 export async function main(event, context, callback) {
     const params = {
       TableName: "products",
       Key: {
-        userId: "eu-central-1:e393fcdf-4bba-4a36-b844-c8bfafc20fc7",
         productId: event.pathParameters.id
       }
     };
@@ -27,7 +27,7 @@ export async function news(event, context, callback) {
   const params = {
     TableName: "news",
     Key: {
-      userId: "eu-central-1:e393fcdf-4bba-4a36-b844-c8bfafc20fc7",
+      userId: config.cognito.USER_ID,
       newsId: event.pathParameters.id
     }
   };
