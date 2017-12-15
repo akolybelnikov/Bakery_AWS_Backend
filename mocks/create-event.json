@@ -1,8 +1,0 @@
-{
-    "body": "{\"category\":\"buns\",\"productname\":\"zimt-bun\",\"content\":\"Christmas flavoured airy bun\",\"attachment\":\"zimtbun.jpg\",\"price\":\"133.10 RUB\"}",
-    "requestContext": {
-        "identity": {
-            "cognitoIdentityId": "eu-central-1:e393fcdf-4bba-4a36-b844-c8bfafc20fc7"
-        }
-    }
-}
