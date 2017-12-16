@@ -35,11 +35,11 @@ export async function news(event, context, callback) {
   const params = {
     TableName: "news",
     Key: {
-      userId: event.requestContext.identity.cognitoIdentityId,
-      productId: event.pathParameters.id
+      newsId: event.pathParameters.id
     },
-    UpdateExpression: "SET content = :content, attachment = :attachment, image = :image",
+    UpdateExpression: "SET archived = :archived, content = :content, attachment = :attachment, image = :image",
     ExpressionAttributeValues: {
+      ":archived": data.archived ? data.archived : null,
       ":content": data.content ? data.content : null,
       ":attachment": data.attachment ? data.attachment : null,
       ":image": data.image ? data.image : null

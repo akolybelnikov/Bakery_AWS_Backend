@@ -43,9 +43,9 @@ export async function products(event, context, callback) {
 export async function offer(event, context, callback) {
   const params = {
     TableName: "offers",
-    KeyConditionExpression: "userId = :userId",
+    KeyConditionExpression: "active = :active",
     ExpressionAttributeValues: {
-      ":userId": config.cognito.USER_ID
+      ":active": "true"
     }
   };
 
@@ -62,9 +62,9 @@ export async function offer(event, context, callback) {
 export async function news(event, context, callback) {
   const params = {
     TableName: "news",
-    KeyConditionExpression: "userId = :userId",
+    KeyConditionExpression: "archived = :archived",
     ExpressionAttributeValues: {
-      ":userId": config.cognito.USER_ID
+      ":archived": "false"
     }
   };
 

@@ -35,7 +35,7 @@ export async function offer(event, context, callback) {
     const params = {
         TableName: "offers",
         Item: {
-            userId: event.requestContext.identity.cognitoIdentityId,
+            active: "true",
             offerId: uuid.v1(),
             content: data.content,
             attachment: data.attachment,
@@ -59,7 +59,7 @@ export async function news(event, context, callback) {
     const params = {
         TableName: "news",
         Item: {
-            userId: event.requestContext.identity.cognitoIdentityId,
+            archived: "false",
             newsId: uuid.v1(),
             content: data.content,
             attachment: data.attachment,
