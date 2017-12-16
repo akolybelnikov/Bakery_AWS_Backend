@@ -6,12 +6,15 @@ export async function main(event, context, callback) {
     const params = {
       TableName: "products",
       Key: {
+        category: event.pathParameters.category,
         productId: event.pathParameters.id
       }
     };
 
     try {
+      console.log("params: ", params)
         const result = await dynamoDbLib.call("get", params);
+        console.log("result: ", result);
         if (result.Item) {
           // Return the retrieved item
           callback(null, success(result.Item));

@@ -6,10 +6,10 @@ export async function main(event, context, callback) {
   const params = {
     TableName: "products",
     Key: {
-      category: data.category,
+      category: event.pathParameters.category,
       productId: event.pathParameters.id
     },
-    UpdateExpression: "SET category = :category, content = :content, attachment = :attachment, productName = :productname, price = :price, weight = :weight, image = :image",
+    UpdateExpression: "SET content = :content, attachment = :attachment, productName = :productname, price = :price, weight = :weight, image = :image",
     ExpressionAttributeValues: {
       ":productname": data.productname ? data.productname : null,
       ":content": data.content ? data.content : null,

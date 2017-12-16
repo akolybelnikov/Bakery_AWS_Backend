@@ -88,7 +88,7 @@ functions:
     handler: get.main
     events:
       - http:
-          path: products/{id}
+          path: products/{id}/{category}
           method: get
           cors: true
 
@@ -104,7 +104,7 @@ functions:
     handler: update.main
     events:
       - http:
-          path: products/{id}
+          path: products/{id}/{category}
           method: put
           cors: true
           authorizer: aws_iam
@@ -113,7 +113,7 @@ functions:
     handler: delete.main
     events:
       - http:
-          path: products/{id}
+          path: products/{id}/{category}
           method: delete
           cors: true
           authorizer: aws_iam
