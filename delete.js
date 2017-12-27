@@ -22,7 +22,7 @@ export async function news(event, context, callback) {
   const params = {
     TableName: "news",
     Key: {
-      userId: event.requestContext.identity.cognitoIdentityId,
+      archived: "false",
       newsId: event.pathParameters.id
     }
   };

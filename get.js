@@ -11,10 +11,8 @@ export async function main(event, context, callback) {
       }
     };
 
-    try {
-      console.log("params: ", params)
+    try {      
         const result = await dynamoDbLib.call("get", params);
-        console.log("result: ", result);
         if (result.Item) {
           // Return the retrieved item
           callback(null, success(result.Item));
@@ -30,7 +28,7 @@ export async function news(event, context, callback) {
   const params = {
     TableName: "news",
     Key: {
-      userId: config.cognito.USER_ID,
+      archived: "false",
       newsId: event.pathParameters.id
     }
   };
