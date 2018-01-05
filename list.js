@@ -26,8 +26,7 @@ export async function products(event, context, callback) {
     KeyConditionExpression: "category = :category",
     ExpressionAttributeValues: {
       ":category": event.pathParameters.category
-    },
-    "ScanIndexForward": false
+    }
   };
 
   try {
@@ -62,7 +61,7 @@ export async function offer(event, context, callback) {
 export async function news(event, context, callback) {
   const params = {
     TableName: "news",
-    KeyConditionExpression: "archived = :archived",
+    KeyConditionExpression: "category = :category",
     ExpressionAttributeValues: {
       ":archived": "false"
     }
@@ -73,6 +72,27 @@ export async function news(event, context, callback) {
 
     // Return the list of products in response body
     callback(null, success(result.Items));
+  } catch (e) {
+    callback(null, failure({ status: false, error: e }));
+  }
+}
+
+export async function search(event, context, callback) {
+  const params = {
+    TableName: "products",
+    ProjectionExpression: "content",
+    FilterExpression: "contains(content, :content)",
+    ExpressionAttributeValues: {
+         ":content": event.pathParameters.content
+    }
+  };
+
+  try {
+    const result = await dynamoDbLib.call("scan", params);
+    
+    // Return the list of filtered products in response body
+    callback(null, success(result.Items));
+  
   } catch (e) {
     callback(null, failure({ status: false, error: e }));
   }
