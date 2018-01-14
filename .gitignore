@@ -47,3 +47,6 @@ mocks
 
 #configuration variables
 config
+
+#vsc configurations
+.vscode

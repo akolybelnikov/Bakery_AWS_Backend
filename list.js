@@ -61,7 +61,7 @@ export async function offer(event, context, callback) {
 export async function news(event, context, callback) {
   const params = {
     TableName: "news",
-    KeyConditionExpression: "category = :category",
+    KeyConditionExpression: "archived = :archived",
     ExpressionAttributeValues: {
       ":archived": "false"
     }
@@ -80,16 +80,17 @@ export async function news(event, context, callback) {
 export async function search(event, context, callback) {
   const params = {
     TableName: "products",
-    ProjectionExpression: "content",
-    FilterExpression: "contains(content, :content)",
+    ProjectionExpression: "productName, content, productId, image",
+    FilterExpression: "contains(productName, :value) or contains(content, :value)",
     ExpressionAttributeValues: {
-         ":content": event.pathParameters.content
+         ":value": event.pathParameters.value
     }
   };
 
   try {
     const result = await dynamoDbLib.call("scan", params);
-    
+    console.log("Params:  ", params);
+    console.log("Result:  ", result.Items);
     // Return the list of filtered products in response body
     callback(null, success(result.Items));
   

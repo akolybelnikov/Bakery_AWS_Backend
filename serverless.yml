@@ -140,6 +140,6 @@ functions:
     handler: list.search
     events:
       - http:
-          path: search
+          path: search/{value}
           method: get
           cors: true
