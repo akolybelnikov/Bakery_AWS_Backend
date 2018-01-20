@@ -12,6 +12,7 @@ export async function main(event, context, callback) {
             productId: uuid.v1(),
             productName: data.productname,
             content: data.content,
+            sort: data.productsort,
             attachment: data.attachment,
             price: data.price,
             image: data.image,

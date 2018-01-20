@@ -9,10 +9,11 @@ export async function main(event, context, callback) {
       category: event.pathParameters.category,
       productId: event.pathParameters.id
     },
-    UpdateExpression: "SET content = :content, attachment = :attachment, productName = :productname, price = :price, weight = :weight, image = :image",
+    UpdateExpression: "SET content = :content, sort = :sort, attachment = :attachment, productName = :productname, price = :price, weight = :weight, image = :image",
     ExpressionAttributeValues: {
       ":productname": data.productname ? data.productname : null,
       ":content": data.content ? data.content : null,
+      ":sort": data.productsort ? data.productsort : null,
       ":attachment": data.attachment ? data.attachment : null,
       ":price": data.price ? data.price : null,
       ":weight": data.weight ? data.weight : null,
