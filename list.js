@@ -13,7 +13,6 @@ export async function main(event, context, callback) {
 
   try {
     const result = await dynamoDbLib.call("query", params);
-    // Return the list of products in response body
     callback(null, success(result.Items));
   } catch (e) {
     callback(null, failure({ status: false, error: e }));
@@ -31,8 +30,6 @@ export async function products(event, context, callback) {
 
   try {
     const result = await dynamoDbLib.call("query", params);
-
-    // Return the list of products in response body
     callback(null, success(result.Items));
   } catch (e) {
     callback(null, failure({ status: false, error: e }));
@@ -50,8 +47,6 @@ export async function offer(event, context, callback) {
 
   try {
     const result = await dynamoDbLib.call("query", params);
-
-    // Return the list of products in response body
     callback(null, success(result.Items));
   } catch (e) {
     callback(null, failure({ status: false, error: e }));
@@ -69,8 +64,6 @@ export async function news(event, context, callback) {
 
   try {
     const result = await dynamoDbLib.call("query", params);
-
-    // Return the list of products in response body
     callback(null, success(result.Items));
   } catch (e) {
     callback(null, failure({ status: false, error: e }));
@@ -91,7 +84,6 @@ export async function search(event, context, callback) {
     const result = await dynamoDbLib.call("scan", params);
     console.log("Params:  ", params);
     console.log("Result:  ", result.Items);
-    // Return the list of filtered products in response body
     callback(null, success(result.Items));
   
   } catch (e) {
